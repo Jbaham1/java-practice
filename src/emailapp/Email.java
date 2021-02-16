@@ -7,7 +7,7 @@ public class Email {
     private String lastName;
     private String password;
     private String department;
-    private int mailboxCapacity;
+    private int mailboxCapacity = 500;
     private String alternateEmail;
     private int defaultPasswordLength = 15;
     private String companySuffix = "startup.com";
@@ -29,9 +29,10 @@ public class Email {
         //fname.lname@dept.company
         String email = firstName.toLowerCase() +"."+ lastName.toLowerCase()+"@"+ department + "." + companySuffix;
         System.out.println("Your email is " + email);
-    }
-    //ask for department
 
+    }
+
+    //ask for department
     private String setDepartment() {
         System.out.println("What department will you be joining? \n1. for Sales \n2. for Development \n3. for Accounting \n0 for none \n Select department option");
         Scanner in = new Scanner(System.in);
@@ -41,6 +42,7 @@ public class Email {
         else if (depChoice == 3){return "acct";}
         else{return "";}
     }
+    //generate random password
     private String randomPassword(int length){
         //possible characters
         String passwordSet = "ABCDEFHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_-";
@@ -57,10 +59,18 @@ public class Email {
         return new String(password);
     }
 
-
-    //generate random password
     //set mailbox capacity
-    //set the alternate email
-    //change the password
+    public void setMailboxCapacity(int capacity){
+        this.mailboxCapacity = capacity;
+    }
 
+    //set the alternate email
+    public void setAlternateEmail(String alternateEmail){
+        this.alternateEmail = alternateEmail;
+    }
+
+    //change the password
+public void changePassword(String password){
+        this.password = password;
+}
 }
