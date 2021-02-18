@@ -8,34 +8,33 @@ public class Email {
     private String lastName;
     private String password;
     private String department;
+    private String email;
     private int mailboxCapacity = 500;
     private String alternateEmail;
     private int defaultPasswordLength = 15;
     private String companySuffix = "startup.com";
 
+
     //constructor receive first and last name
     public Email(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-        System.out.println("Welcome to the company! Your email has been created " + this.firstName + " " + this.lastName);
+        System.out.println("Welcome to the company! \nLets create your work email " + this.firstName + " " + this.lastName);
 
         //call method asking for department -return department
         this.department = setDepartment();
-        System.out.println("Your department: " + this.department);
 
         //call method that returns random password
         this.password = randomPassword(defaultPasswordLength);
-        System.out.println("You new password is: " + this.password);
         //combine elements to generate email
         //fname.lname@dept.company
-        String email = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@" + department + "." + companySuffix;
-        System.out.println("Your email is " + email);
+         email = firstName.toLowerCase() + "." + lastName.toLowerCase() + "@" + department + "." + companySuffix;
 
     }
 
     //ask for department
     private String setDepartment() {
-        System.out.println("What department will you be joining? \n1. for Sales \n2. for Development \n3. for Accounting \n0 for none \n Select department option");
+        System.out.println("What department will you be joining? \n1. for Sales \n2. for Development \n3. for Accounting \n0 for Executive \n Select department option");
         Scanner in = new Scanner(System.in);
         int depChoice = in.nextInt();
         if (depChoice == 1) {
@@ -45,7 +44,7 @@ public class Email {
         } else if (depChoice == 3) {
             return "acct";
         } else {
-            return "";
+            return "exec";
         }
     }
 
@@ -91,5 +90,12 @@ public class Email {
 
     public String getPassword() {
         return password;
+    }
+
+    public String showInfo() {
+        return "Display Name: " + firstName + " " + lastName +
+                "\nCompany Email: " + email +
+                "\nPassword: " + password +
+                "\nMailbox Capacity: " + mailboxCapacity + "mb";
     }
 }
