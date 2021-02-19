@@ -7,8 +7,8 @@ public class Student {
     private String lastName;
     private int academicYear;
     private String studentID;
-    private String courses;
-    private int tuitionBalance;
+    private String courses=null;
+    private int tuitionBalance=0;
     private static int courseCost = 600;
     private static int id = 1000;
 
@@ -24,8 +24,9 @@ public class Student {
         System.out.println("Please select student academic year.\n1. Freshmen\n2. Sophomore\n3. Junior\n4. Senior");
         this.academicYear = in.nextInt();
 
-        System.out.println(firstName + " " + lastName + " " + academicYear);
         setStudentID();
+
+        System.out.println(firstName + " " + lastName + " " + academicYear+ " "+ studentID);
     }
 
     //generate student id
@@ -35,7 +36,22 @@ public class Student {
         studentID = academicYear + "" + id;
     }
     //enroll in courses
-
+public void enroll(){
+        //loop user hits 0 when done enrolling
+    do {
+        System.out.print("Enter course to enroll (q to quit): ");
+        Scanner in = new Scanner(System.in);
+        String course = in.nextLine();
+        if (!course.equals("q")) {
+            courses = courses + "\n" + course;
+            tuitionBalance = tuitionBalance + courseCost;
+        } else{
+            break;
+        }
+    }while(1 != 0);
+    System.out.println("Enrolled in: " + courses);
+    System.out.println("Tuition balance: " + tuitionBalance);
+}
     //view balance
 
     // pay tuition
