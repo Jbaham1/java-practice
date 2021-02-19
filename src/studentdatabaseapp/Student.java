@@ -7,8 +7,8 @@ public class Student {
     private String lastName;
     private int academicYear;
     private String studentID;
-    private String courses=null;
-    private int tuitionBalance=0;
+    private String courses = null;
+    private int tuitionBalance = 0;
     private static int courseCost = 600;
     private static int id = 1000;
 
@@ -26,7 +26,7 @@ public class Student {
 
         setStudentID();
 
-        System.out.println(firstName + " " + lastName + " " + academicYear+ " "+ studentID);
+        System.out.println(firstName + " " + lastName + " " + academicYear + " " + studentID);
     }
 
     //generate student id
@@ -35,26 +35,35 @@ public class Student {
         id++;
         studentID = academicYear + "" + id;
     }
+
     //enroll in courses
-public void enroll(){
+    public void enroll() {
         //loop user hits 0 when done enrolling
-    do {
-        System.out.print("Enter course to enroll (q to quit): ");
-        Scanner in = new Scanner(System.in);
-        String course = in.nextLine();
-        if (!course.equals("q")) {
-            courses = courses + "\n" + course;
-            tuitionBalance = tuitionBalance + courseCost;
-        } else{
-            break;
-        }
-    }while(1 != 0);
-    System.out.println("Enrolled in: " + courses);
-    System.out.println("Tuition balance: " + tuitionBalance);
-}
+        do {
+            System.out.print("Enter course to enroll (q to quit): ");
+            Scanner in = new Scanner(System.in);
+            String course = in.nextLine();
+            if (!course.equals("q")) {
+                courses = courses + "\n" + course;
+                tuitionBalance = tuitionBalance + courseCost;
+            } else {
+                break;
+            }
+        } while (1 != 0);
+        System.out.println("Enrolled in: " + courses);
+        System.out.println("Tuition balance: " + tuitionBalance);
+    }
+
     //view balance
+    public void viewBalance() {
+        System.out.println("Your balance is: $" + tuitionBalance);
+    }
 
     // pay tuition
-
+    public void payTuition(int payment) {
+        tuitionBalance = tuitionBalance - payment;
+        System.out.println("Thank you for your payment of " + payment);
+        viewBalance();
+    }
     //show status
 }
